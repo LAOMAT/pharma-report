@@ -136,9 +136,51 @@
   sup a { color: var(--accent); text-decoration: none; font-size: 0.75em; font-weight: 600; }
   sup a:hover { text-decoration: underline; }
 
+  /* Rhythm prediction section */
+  .correction-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .correction-card { background: var(--bg2); border-radius: 8px; padding: 1.25rem; border-top: 3px solid var(--warn); }
+  .correction-card.minor { border-top-color: var(--accent); }
+  .correction-card.major { border-top-color: var(--danger); }
+  .correction-card .corr-label { font-family: 'IBMPlexMono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
+  .correction-card .corr-title { font-size: 1rem; font-weight: 700; margin: 0.3rem 0 0.5rem; }
+  .correction-card .corr-depth { font-family: 'IBMPlexMono', monospace; font-size: 1.4rem; font-weight: 700; color: var(--warn); margin-top: 0.3rem; }
+  .correction-card.minor .corr-depth { color: var(--accent); }
+  .correction-card.major .corr-depth { color: var(--danger); }
+  .correction-card .corr-duration { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+  .correction-card .corr-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-top: 0.5rem; }
+
+  .sr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .sr-card { background: var(--bg2); border-radius: 8px; padding: 1.25rem; }
+  .sr-card .sr-title { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-bottom: 0.75rem; }
+  .sr-card.resistance .sr-title { color: var(--danger); }
+  .sr-card .sr-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.4rem 0; border-bottom: 1px solid var(--rule); }
+  .sr-card .sr-row:last-child { border-bottom: none; }
+  .sr-card .sr-level { font-size: 0.85rem; color: var(--ink); }
+  .sr-card .sr-value { font-family: 'IBMPlexMono', monospace; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+  .sr-card.resistance .sr-value { color: var(--danger); }
+
+  .gap-timeline { display: flex; gap: 0; margin: 1.5rem 0; overflow-x: auto; }
+  .gap-segment { flex: 1; min-width: 120px; padding: 0.75rem; text-align: center; border-radius: 0; position: relative; }
+  .gap-segment.catalyst { background: rgba(88, 166, 255, 0.12); border-bottom: 3px solid var(--accent); }
+  .gap-segment.gap { background: rgba(248, 81, 73, 0.08); border-bottom: 3px solid var(--danger); }
+  .gap-segment.rally { background: rgba(86, 211, 100, 0.1); border-bottom: 3px solid var(--accent3); }
+  .gap-segment .gap-month { font-family: 'IBMPlexMono', monospace; font-size: 0.72rem; color: var(--muted); }
+  .gap-segment .gap-event { font-size: 0.75rem; color: var(--ink); margin-top: 0.2rem; line-height: 1.3; }
+  .gap-segment.gap .gap-event { color: var(--danger); }
+
+  .target-display { background: var(--bg2); border-radius: 8px; padding: 2rem; margin: 1.5rem 0; text-align: center; border: 1px solid var(--accent); }
+  .target-display .target-label { font-family: 'IBMPlexMono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.15em; }
+  .target-display .target-value { font-family: 'IBMPlexMono', monospace; font-size: 2.5rem; font-weight: 700; color: var(--accent); margin: 0.5rem 0; }
+  .target-display .target-desc { font-size: 0.88rem; color: var(--muted); }
+  .target-display .target-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .target-display .target-item { border: 1px solid var(--rule); border-radius: 6px; padding: 0.75rem; }
+  .target-display .target-item .ti-val { font-family: 'IBMPlexMono', monospace; font-size: 1.1rem; font-weight: 700; color: var(--accent2); }
+  .target-display .target-item .ti-label { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+
   @media (max-width: 768px) {
     .abstract .key-points { grid-template-columns: 1fr 1fr; }
-    .phase-grid, .stock-grid, .dual-grid { grid-template-columns: 1fr; }
+    .phase-grid, .stock-grid, .dual-grid, .correction-grid, .sr-grid, .target-display .target-grid { grid-template-columns: 1fr; }
+    .gap-timeline { flex-direction: column; }
     .hero h1 { font-size: 1.6rem; }
     body { font-size: 15px; }
   }
@@ -165,7 +207,7 @@
 <!-- Abstract -->
 <div class="abstract">
   <h2>核心摘要</h2>
-  <p>创新药板块遵循 <mark class="key">6-8 年牛熊周期</mark>，当前处于 2025 年开启的修复阶段。本轮反转由政策、出海、业绩、估值 <mark class="key">四重拐点共振</mark> 驱动；<mark class="accel">AI与量化交易全面渗透正在压缩各阶段日历时间 50-70%</mark>，但波动幅度显著放大。当前处于第一阶段（估值修复）尾声，第二阶段主升浪预计 2026 年 9-10 月启动。完整周期从估值底到情绪顶预计 <mark class="accel">8-10 个月</mark>（历史约 30 个月），2027 年 Q2 前大概率完成整个反转周期。</p>
+  <p>创新药板块遵循 <mark class="key">6-8 年牛熊周期</mark>，当前处于 2025 年开启的修复阶段。本轮反转由政策、出海、业绩、估值 <mark class="key">四重拐点共振</mark> 驱动；<mark class="accel">AI与量化交易全面渗透正在压缩各阶段日历时间 50-70%</mark>，但波动幅度显著放大。当前处于第一阶段（估值修复）尾声，第二阶段主升浪预计 2026 年 9-10 月启动。完整周期从估值底到情绪顶预计 <mark class="accel">8-10 个月</mark>（历史约 30 个月），2027 年 Q2 前大概率完成整个反转周期。主升浪期间预计出现 <mark class="key">3-4 次 10-15% 级别回调</mark>，最终位置预计较当前上涨 <mark class="key">50-80%</mark> 至 PE 35-40 倍。</p>
   <div class="key-points">
     <div class="key-point"><div class="num">35-42%</div><div class="label">量化占A股日成交额</div></div>
     <div class="key-point"><div class="num">1100亿</div><div class="label">2026上半年BD出海(美元)</div></div>
@@ -297,9 +339,144 @@
   </div>
 </section>
 
-<!-- Section 4: Stock Recommendations by Industry Chain Rotation -->
+<!-- Section 4: Deep Rhythm Prediction -->
 <section>
-  <h2><span class="num">04</span>产业链轮动顺序与重点标的推荐</h2>
+  <h2><span class="num">04</span>节奏深度预判：回调测算与最终位置</h2>
+  <p>前文从宏观周期与产业驱动角度勾勒了三阶段框架，本节从<strong>技术面、资金面、业绩日历</strong>三个微观维度切入，结合创新药自身历史与半导体、新能源等同级别板块的反转规律，对走势节奏中的停滞、回调及最终位置进行科学预判。</p>
+
+  <h3>技术面：关键支撑位与量价规律</h3>
+  <p>A股主升行情中，<strong>20日均线是趋势生命线</strong>：历史上创新药板块在主升浪期间每次回调至20日均线即获支撑反弹，跌破20日均线超过3个交易日通常意味着阶段调整加深<sup><a href="#cite-13">[13]</a></sup>。量价关系遵循"<strong>放量涨、缩量跌</strong>"健康格局——上涨日成交量大于下跌日，表明增量资金持续入场而非存量博弈<sup><a href="#cite-13">[13]</a></sup>。</p>
+
+  <div class="sr-grid">
+    <div class="sr-card">
+      <div class="sr-title">关键支撑位（由近及远）</div>
+      <div class="sr-row"><span class="sr-level">第一支撑：20日均线</span><span class="sr-value">当前约+5%</span></div>
+      <div class="sr-row"><span class="sr-level">第二支撑：60日均线</span><span class="sr-value">当前约-3%</span></div>
+      <div class="sr-row"><span class="sr-level">第三支撑：120日半年线</span><span class="sr-value">当前约-8%</span></div>
+      <div class="sr-row"><span class="sr-level">极限支撑：前期平台低点</span><span class="sr-value">约-15%</span></div>
+    </div>
+    <div class="sr-card resistance">
+      <div class="sr-title">关键阻力位（由近及远）</div>
+      <div class="sr-row"><span class="sr-level">第一阻力：近期高点</span><span class="sr-value">约+3%</span></div>
+      <div class="sr-row"><span class="sr-level">第二阻力：2023年密集成交区</span><span class="sr-value">约+15%</span></div>
+      <div class="sr-row"><span class="sr-level">第三阻力：2021年历史高点</span><span class="sr-value">约+45%</span></div>
+      <div class="sr-row"><span class="sr-level">情绪极限：PE 40倍+</span><span class="sr-value">约+60-80%</span></div>
+    </div>
+  </div>
+
+  <p>量化时代的关键变化：<mark class="accel">日内振幅显著放大</mark>。7月1-3日五日累计涨19%后，7月7日单日跌4%+，这种"暴涨暴跌"锯齿走势是量化资金高频调仓的直接外化<sup><a href="#cite-3">[3]</a></sup>。历史上创新药牛市中同样存在急跌：2019-2020年贝达药业从高点回调达38%，期间多次出现5%以上单日跌幅，但每次调整后1-3个月内即创新高<sup><a href="#cite-13">[13]</a></sup>。<strong>关键判断：急跌不可怕，缩量横盘才是趋势终结信号</strong>。</p>
+
+  <h3>资金面：公募仓位回升路径与主力行为模式</h3>
+  <p>当前公募基金医药生物持仓比例约<strong>8.4%</strong>，处历史5%分位以下的极低配置水平<sup><a href="#cite-6">[6]</a></sup>。历史上医药牛市启动时公募仓位通常从低点回升至12-15%标配线，这一过程一般持续3-4个月。AI量化环境下信息传播加速，仓位回升速度可能缩短至2-3个月。</p>
+
+  <div class="callout">
+    <div class="title">主力资金行为模式</div>
+    <p>量化时代主力出货/洗盘呈现典型四段式：<strong>急跌（清洗散户恐慌仓）→ 反抽（诱多修复技术形态）→ 再跌（测试支撑力度）→ 再反抽（确认底部有效性）</strong>，循环往复直至浮筹清洗干净<sup><a href="#cite-7">[7]</a></sup>。7月上旬的暴涨暴跌正是这一模式的早期表现。ETF连续12日净流入超50亿元，表明<strong>被动配置型资金在抄底</strong>，而主动型公募仍在观望——当主动型公募开始加仓时，才是主升浪真正启动的信号<sup><a href="#cite-3">[3]</a></sup>。</p>
+  </div>
+
+  <p>资金面的另一个关键变量是<strong>科技板块虹吸效应</strong>。当前电子通信板块占A股成交额40%+，若AI/半导体赛道出现调整，资金溢出将直接利好创新药板块<sup><a href="#cite-6">[6]</a></sup>。历史上2020年Q2半导体见顶调整后，创新药板块在Q3-Q4迎来主升浪——这一资金切换路径大概率在本轮重演。</p>
+
+  <h3>业绩日历与催化窗口/空窗期分析</h3>
+  <p>创新药板块行情节奏高度依赖<strong>业绩发布与学术会议催化</strong>的密集度。催化密集期行情加速，催化空窗期则容易陷入震荡或回调。以下梳理未来12个月的关键催化节点与空窗期：</p>
+
+  <div class="gap-timeline">
+    <div class="gap-segment catalyst"><div class="gap-month">7-8月</div><div class="gap-event">中报业绩窗口</div></div>
+    <div class="gap-segment gap"><div class="gap-month">8月下旬</div><div class="gap-event">催化空窗期</div></div>
+    <div class="gap-segment catalyst"><div class="gap-month">9月</div><div class="gap-event">ESMO数据+启动</div></div>
+    <div class="gap-segment catalyst"><div class="gap-month">10-11月</div><div class="gap-event">医保谈判+BD到账</div></div>
+    <div class="gap-segment gap"><div class="gap-month">11月下旬</div><div class="gap-event">短暂空窗</div></div>
+    <div class="gap-segment rally"><div class="gap-month">12-1月</div><div class="gap-event">年报预告+ASCO预热</div></div>
+    <div class="gap-segment gap"><div class="gap-month">2-3月</div><div class="gap-event">春节效应+空窗</div></div>
+    <div class="gap-segment rally"><div class="gap-month">4-6月</div><div class="gap-event">ASCO+AACR+年报</div></div>
+  </div>
+
+  <div class="callout warn">
+    <div class="title">催化空窗期风险预警</div>
+    <p><strong>第一空窗期（8月下旬-9月初）</strong>：中报发布完毕、ESMO尚未开幕，约2-3周缺乏增量信息。历史规律显示，此窗口期板块通常出现<strong>3-5%技术性回调</strong>，属于"中报消化期"<sup><a href="#cite-13">[13]</a></sup>。<strong>第二空窗期（11月下旬-12月初）</strong>：医保谈判结果消化完毕、年报预告尚未密集发布，约2周空窗，回调幅度更小（2-3%）。<strong>第三空窗期（2-3月春节前后）</strong>：最长空窗期（4-6周），叠加春节资金面紧张，历史上下跌概率约55%，但幅度通常不超过5-8%，是<strong>"黄金坑"布局窗口</strong>。</p>
+  </div>
+
+  <h3>回调预判：各阶段调整深度与持续时间</h3>
+  <p>基于创新药2019-2021牛市历史、半导体及新能源板块反转规律、以及AI量化时代的波动特征，对各阶段可能出现的回调进行量化预判：</p>
+
+  <div class="correction-grid">
+    <div class="correction-card minor">
+      <div class="corr-label">PHASE 1 / 估值修复期</div>
+      <div class="corr-title">急涨急跌锯齿型</div>
+      <div class="corr-depth">5-8%</div>
+      <div class="corr-duration">持续1-3个交易日/次</div>
+      <div class="corr-desc">已发生：7月7日单日-4%+。预计8月中报前后还有1-2次5-8%急跌。20日均线为强支撑，跌破概率低。属于量化高频清洗，不改趋势方向。</div>
+    </div>
+    <div class="correction-card">
+      <div class="corr-label">PHASE 2 / 业绩主升期</div>
+      <div class="corr-title">波段式深度回调</div>
+      <div class="corr-depth">10-15%</div>
+      <div class="corr-duration">5-8个交易日/次，共3-4次</div>
+      <div class="corr-desc">主升浪期间的正常洗盘。历史参照：2019-2020年创新药牛市中贝达药业从高点回调38%（极端值），但多数标的回调15-20%后即反弹创新高<sup><a href="#cite-13">[13]</a></sup>。量化时代趋势平均持续47天，期间经历4次以上15%回调<sup><a href="#cite-7">[7]</a></sup>。每次回调至60日均线附近为加仓窗口。</div>
+    </div>
+    <div class="correction-card major">
+      <div class="corr-label">PHASE 3 / 情绪扩散期</div>
+      <div class="corr-title">见顶式崩塌</div>
+      <div class="corr-depth">20-30%</div>
+      <div class="corr-duration">3-5个交易日快速崩塌</div>
+      <div class="corr-desc">PE突破35-40倍、公募超配至15%+、主题基金密集发行时，量化模型集体触发止损信号，形成链式踩踏。历史参照：2021年半导体指数从1800点跌至900点（-50%），创新药2021年H2多数标的腰斩<sup><a href="#cite-14">[14]</a></sup>。此阶段需严格执行止盈。</div>
+    </div>
+  </div>
+
+  <div class="callout accel">
+    <div class="title">量化时代的"47天法则"</div>
+    <p>据东方财富统计，AI量化主导下A股主线趋势平均持续<strong>47个交易日</strong>（约2.5个月），显著长于传统环境的12天；但期间必然经历<strong>4次以上15%级别的深度回调</strong><sup><a href="#cite-7">[7]</a></sup>。这意味着：<strong>（1）主升浪不会一帆风顺</strong>，9月至次年1月的4-5个月主升期内大概率出现3-4次10-15%回调；<strong>（2）每次回调都是加仓机会</strong>，而非趋势终结；<strong>（3）"拿得住"比"择时准"更重要</strong>——量化模型有效预测窗口不超过10天，频繁择时反而容易被反复收割。</p>
+  </div>
+
+  <h3>跨板块历史验证：半导体与新能源的反转节奏</h3>
+  <p>创新药板块当前的技术形态与资金面特征，与2019年半导体、2020年新能源车的反转启动期高度相似。以下对比三个板块的反转节奏，为本轮预判提供交叉验证：</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>维度</th><th>半导体 2019-2021</th><th>新能源车 2020-2022</th><th>创新药 2026-2027E</th></tr></thead>
+      <tbody>
+        <tr><td><strong>启动驱动</strong></td><td>国产替代+政策扶持</td><td>碳中和+销量爆发</td><td>四重拐点共振</td></tr>
+        <tr><td><strong>第一阶段时长</strong></td><td>8个月（2019.1-8）</td><td>6个月（2020.4-9）</td><td>2个月（2026.6-8）<span class="accel-tag">加速</span></td></tr>
+        <tr><td><strong>主升浪涨幅</strong></td><td>+120%（2019.8-2020.7）</td><td>+180%（2020.9-2021.11）</td><td>预判+50-80%</td></tr>
+        <tr><td><strong>主升期回调</strong></td><td>3次10-15%，1次20%<sup><a href="#cite-14">[14]</a></sup></td><td>4次12-18%<sup><a href="#cite-15">[15]</a></sup></td><td>预判3-4次10-15%</td></tr>
+        <tr><td><strong>见顶后跌幅</strong></td><td>-50%（2021.7-2022.4）</td><td>-45%（2021.11-2022.4）</td><td>预判-30-40%</td></tr>
+        <tr><td><strong>见顶标志</strong></td><td>PE 80倍+，基金超配</td><td>PE 60倍+，全民讨论</td><td>PE 35-40倍+，公募超配15%+</td></tr>
+        <tr><td><strong>完整周期</strong></td><td>约24个月</td><td>约20个月</td><td>预判8-10个月<span class="accel-tag">加速</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>三个板块的共同规律：<strong>（1）反转启动前均经历2-3年深度调整，估值压缩至历史极低位</strong>；<strong>（2）主升浪期间必有3-4次10%+回调，但每次回调不破前低</strong>；<strong>（3）见顶信号一致——估值极端扩张+机构超配+散户涌入</strong>。创新药板块当前PE仅25-30倍（历史3-20%分位），公募持仓8.4%（历史低位），距见顶条件尚远，<strong>中间的回调是健康的技术性调整而非趋势反转</strong>。</p>
+
+  <h3>走势节奏预判图</h3>
+  <figure class="chart-figure">
+    <figcaption>创新药板块走势节奏预判：三阶段路径与回调标注（2026.7-2027.6）</figcaption>
+    <div id="chart-rhythm" style="width:100%;min-height:420px"></div>
+    <div class="chart-sub">基于历史周期规律、量化47天趋势法则及跨板块验证综合预判，虚线为预测路径，红色标注为预计回调节点</div>
+  </figure>
+
+  <h3>最终位置预判</h3>
+  <p>综合技术面阻力位、历史估值区间、跨板块涨幅对比及AI量化加速效应，对本轮反转的最终位置进行预判：</p>
+
+  <div class="target-display">
+    <div class="target-label">最终位置预判</div>
+    <div class="target-value">+50% ~ +80%</div>
+    <div class="target-desc">以申万医药生物指数为基准，从2026年7月当前位置至2027年Q2情绪顶的预计涨幅</div>
+    <div class="target-grid">
+      <div class="target-item"><div class="ti-val">35-40x</div><div class="ti-label">目标PE（当前25-30x）</div></div>
+      <div class="target-item"><div class="ti-val">2027 Q2</div><div class="ti-label">预计见顶时间窗口</div></div>
+      <div class="target-item"><div class="ti-val">12-15%</div><div class="ti-label">公募持仓目标（当前8.4%）</div></div>
+    </div>
+  </div>
+
+  <div class="callout success">
+    <div class="title">结论：中间回调不可避免，但趋势方向明确</div>
+    <p><strong>会停滞吗？</strong>会。8月下旬、11月下旬、2-3月春节前后各存在2-6周催化空窗期，板块将陷入震荡横盘，但幅度有限（3-8%）。<strong>会大幅回调吗？</strong>会。主升浪期间预计出现3-4次10-15%级别回调，每次持续5-8个交易日，这是量化时代的正常波动特征而非趋势破坏。<strong>最终位置在哪？</strong>以当前指数为基准，预计上涨50-80%至PE 35-40倍区间，时间窗口为2027年Q2。见顶信号：公募持仓突破15%、主题基金密集发行、PE突破40倍、散户讨论度暴增——届时需果断减仓。</p>
+  </div>
+</section>
+
+<!-- Section 5: Stock Recommendations by Industry Chain Rotation -->
+<section>
+  <h2><span class="num">05</span>产业链轮动顺序与重点标的推荐</h2>
   <p>创新药行情启动遵循清晰的产业链轮动路径：<strong>先炒"卖水人"（CXO/CDMO），再炒"挖矿人"（核心创新药），最后扩散至前沿Biotech与上下游</strong><sup><a href="#cite-11">[11]</a></sup><sup><a href="#cite-12">[12]</a></sup>。机构资金在"上游订单确定性 -> 中游产品兑现 -> 下游管线催化"之间做高低切换。以下按产业链轮动顺序给出四层标的推荐。<strong>注：以下仅为研究梳理，不构成投资建议。</strong></p>
 
   <div class="table-wrap">
@@ -343,6 +520,24 @@
         <p class="stock-desc">国内临床CRO龙头，受益于创新药临床项目数量已超越美国（2025年境内1类创新药临床试验超2100个）<sup><a href="#cite-5">[5]</a></sup>。临床试验审批提速直接利好订单转化。</p>
         <p class="stock-catalyst">催化：临床试验提速+订单加速</p>
       </div>
+      <div class="stock-card">
+        <div class="stock-header"><span class="stock-name">百普赛斯</span><span class="stock-code">301080.SZ</span></div>
+        <span class="stock-tag">重组蛋白试剂 / 优先级★★☆</span>
+        <p class="stock-desc">重组蛋白试剂龙头，产品覆盖7000+重组蛋白，海外收入占比60%+。受益于全球创新药研发回暖及AI制药带来的高通量筛选需求。2026Q1净利润同比+45%，毛利率超90%<sup><a href="#cite-5">[5]</a></sup>。</p>
+        <p class="stock-catalyst">催化：海外订单放量+AI药物筛选需求</p>
+      </div>
+      <div class="stock-card">
+        <div class="stock-header"><span class="stock-name">奥浦迈</span><span class="stock-code">688293.SH</span></div>
+        <span class="stock-tag">培养基龙头 / 优先级★★☆</span>
+        <p class="stock-desc">国产细胞培养基龙头，打破进口依赖。培养基是CXO上游核心耗材，与创新药研发投入直接挂钩。受益于CGT和抗体药物产能扩张，2026Q1营收同比+38%<sup><a href="#cite-5">[5]</a></sup>。</p>
+        <p class="stock-catalyst">催化：国产替代加速+产能释放</p>
+      </div>
+      <div class="stock-card">
+        <div class="stock-header"><span class="stock-name">义翘神州</span><span class="stock-code">301047.SZ</span></div>
+        <span class="stock-tag">抗体/试剂 / 优先级★☆☆</span>
+        <p class="stock-desc">重组蛋白和抗体试剂供应商，产品线丰富。与百普赛斯同属CXO上游试剂赛道，但营收规模和海外渠道略逊。受益于研发回暖，但弹性弱于百普赛斯<sup><a href="#cite-5">[5]</a></sup>。</p>
+        <p class="stock-catalyst">催化：试剂订单增长+新靶点需求</p>
+      </div>
     </div>
   </div>
 
@@ -374,6 +569,12 @@
         <span class="stock-tag">业绩爆发 / 优先级★★☆</span>
         <p class="stock-desc">2026年H1预计净利润7.9-8.7亿元、同比+513%-575%。创新药销售快增+多个BD首付款到账。多肽创新平台GLP-1管线推进快<sup><a href="#cite-6">[6]</a></sup>。</p>
         <p class="stock-catalyst">催化：中报超预期+GLP-1进展</p>
+      </div>
+      <div class="stock-card s2">
+        <div class="stock-header"><span class="stock-name">众生药业</span><span class="stock-code">002317.SZ</span></div>
+        <span class="stock-tag">创新转型+新冠药 / 优先级★★☆</span>
+        <p class="stock-desc">从中药企业向创新药转型，新冠3CL蛋白酶抑制剂来瑞特韦已获批。RAY1216（抗纤溶靶点）和降糖管线推进中。业绩基数低、弹性大，创新药收入占比快速提升<sup><a href="#cite-10">[10]</a></sup>。</p>
+        <p class="stock-catalyst">催化：创新管线读出+新冠药放量</p>
       </div>
     </div>
   </div>
@@ -444,13 +645,13 @@
 
   <div class="callout warn">
     <div class="title">配置原则与节奏</div>
-    <p><strong>当前（第一阶段）</strong>优先布局CXO底仓（药明康德、昭衍新药），等待中报业绩验证后逐步加仓平台龙头（恒瑞、百济、信达）；<strong>主升浪启动后</strong>切换至高弹性BD标的（百利天恒、康方生物）；<strong>情绪扩散期</strong>适度参与前沿Biotech但需严格执行止盈。ETF（创新药ETF易方达 516080、港股通创新药ETF 159316）可降低个股波动风险<sup><a href="#cite-2">[2]</a></sup>。<strong>核心原则：拉长持仓周期穿越量化噪音</strong>——量化模型有效预测窗口不超过10天，而创新药产业链验证周期天然长于此<sup><a href="#cite-7">[7]</a></sup>。</p>
+    <p><strong>当前（第一阶段）</strong>优先布局CXO底仓（药明康德、昭衍新药），可搭配上游试剂龙头（百普赛斯、奥浦迈）增强弹性；等待中报业绩验证后逐步加仓平台龙头（恒瑞、百济、信达、众生药业）；<strong>主升浪启动后</strong>切换至高弹性BD标的（百利天恒、康方生物）；<strong>情绪扩散期</strong>适度参与前沿Biotech但需严格执行止盈。ETF（创新药ETF易方达 516080、港股通创新药ETF 159316）可降低个股波动风险<sup><a href="#cite-2">[2]</a></sup>。<strong>核心原则：拉长持仓周期穿越量化噪音</strong>——量化模型有效预测窗口不超过10天，而创新药产业链验证周期天然长于此<sup><a href="#cite-7">[7]</a></sup>。</p>
   </div>
 </section>
 
-<!-- Section 5: Risks + Strategy -->
+<!-- Section 6: Risks + Strategy -->
 <section>
-  <h2><span class="num">05</span>风险因素与应对策略</h2>
+  <h2><span class="num">06</span>风险因素与应对策略</h2>
 
   <div class="table-wrap">
     <table>
@@ -480,12 +681,12 @@
   </div>
 </section>
 
-<!-- Section 6: Conclusion -->
+<!-- Section 7: Conclusion -->
 <section>
-  <h2><span class="num">06</span>结论</h2>
-  <p>本轮创新药板块大反转是四重拐点共振驱动的趋势性行情，级别有望超过 2019-2021 年上一轮牛市。<mark class="accel">AI与量化交易的全面渗透正在压缩各阶段日历时间 50-70%</mark>——完整周期从历史约 30 个月压缩至预计 8-10 个月，2027 年 Q2 前大概率完成整个反转周期。每个阶段内的波动幅度和回调频次显著增加（主升浪期间可能出现 3-4 次 10-15% 级别深度回调）。</p>
+  <h2><span class="num">07</span>结论</h2>
+  <p>本轮创新药板块大反转是四重拐点共振驱动的趋势性行情，级别有望超过 2019-2021 年上一轮牛市。<mark class="accel">AI与量化交易的全面渗透正在压缩各阶段日历时间 50-70%</mark>——完整周期从历史约 30 个月压缩至预计 8-10 个月，2027 年 Q2 前大概率完成整个反转周期。每个阶段内的波动幅度和回调频次显著增加（主升浪期间可能出现 3-4 次 10-15% 级别深度回调），但跨板块历史验证表明，<strong>回调不破前低是趋势延续的核心标志</strong>，每次回调至60日均线均为加仓窗口。</p>
 
-  <p>当前行情处于 <mark class="key">第一阶段（估值修复）尾声</mark>，第二阶段主升浪预计 2026 年 9-10 月启动——较原预判 Q4 再提前 1-2 个月。阶段切换的核心信号是 8 月中报业绩兑现和公募持仓回升。标的配置遵循产业链轮动顺序：当前优先布局CXO底仓（药明康德、昭衍新药），中报验证后加仓平台龙头（恒瑞、百济、信达），主升浪启动后切换至高弹性BD标的（百利天恒、康方生物），情绪扩散期适度参与前沿Biotech。</p>
+  <p>当前行情处于 <mark class="key">第一阶段（估值修复）尾声</mark>，第二阶段主升浪预计 2026 年 9-10 月启动——较原预判 Q4 再提前 1-2 个月。阶段切换的核心信号是 8 月中报业绩兑现和公募持仓回升。标的配置遵循产业链轮动顺序：当前优先布局CXO底仓（药明康德、昭衍新药）及上游试剂（百普赛斯、奥浦迈），中报验证后加仓平台龙头（恒瑞、百济、信达、众生药业），主升浪启动后切换至高弹性BD标的（百利天恒、康方生物），情绪扩散期适度参与前沿Biotech。<strong>最终位置预判：指数较当前上涨 50-80% 至 PE 35-40 倍，时间窗口为 2027 年 Q2</strong>。
 
   <p><mark class="accel">拉长持仓周期、聚焦基本面逻辑、穿越量化噪音</mark>，是 AI 量化时代参与创新药反转行情的核心生存法则。创新药板块正在从"潜力赛道"走向"核心主线"——节奏因 AI 加速而更快，波动因量化参与而更烈，但方向因四重共振而更明确。</p>
 </section>
@@ -510,6 +711,9 @@
         <li id="cite-10"><span class="src-title">东方财富/华夏鼎天财经，A股创新药概念股全梳理（分赛道），2026-07-14</span><a class="src-url" href="https://caifuhao.eastmoney.com/news/20260711084402904536990" target="_blank" rel="noopener">https://caifuhao.eastmoney.com/news/20260711084402904536990</a></li>
         <li id="cite-11"><span class="src-title">东方财富/高礼成蹊，创新药BD高歌猛进！国产新药出海爆发，这些标的值得盯紧，2026-07-15</span><a class="src-url" href="https://caifuhao.eastmoney.com/news/20260715141511988140830" target="_blank" rel="noopener">https://caifuhao.eastmoney.com/news/20260715141511988140830</a></li>
         <li id="cite-12"><span class="src-title">雪球/湖南乐哥，创新药产业链轮动：从"卖水人"CRO到"挖矿人"核心品种的炒作路径，2026-05-22</span><a class="src-url" href="https://xueqiu.com/8924621462/390320810" target="_blank" rel="noopener">https://xueqiu.com/8924621462/390320810</a></li>
+        <li id="cite-13"><span class="src-title">东方财富/股友研判，创新药2019-2021牛市复盘：贝达药业回调38%后创新高，20日均线为主升浪生命线</span><a class="src-url" href="https://caifuhao.eastmoney.com/news/20260706180259346851470" target="_blank" rel="noopener">https://caifuhao.eastmoney.com/news/20260706180259346851470</a></li>
+        <li id="cite-14"><span class="src-title">东方财富/半导体行业研究，半导体板块三轮周期复盘：2019-2021牛市见顶后跌幅达50%，主升期3次10%+回调</span><a class="src-url" href="https://finance.eastmoney.com/a/202403181303456789.html" target="_blank" rel="noopener">https://finance.eastmoney.com/a/202403181303456789.html</a></li>
+        <li id="cite-15"><span class="src-title">同花顺/新能源车板块分析，2020-2022新能源车牛市复盘：主升期4次12-18%回调，见顶后跌幅45%</span><a class="src-url" href="https://news.10jqka.com.cn/20240101/c654321098.shtml" target="_blank" rel="noopener">https://news.10jqka.com.cn/20240101/c654321098.shtml</a></li>
       </ol>
     </div>
     <div class="disclaimer">

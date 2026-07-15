@@ -97,4 +97,85 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     window.addEventListener('resize', function() { chartTimeline.resize(); });
   }
+
+  // --- Chart 3: 走势节奏预判图 ---
+  var chartRhythmElem = document.getElementById('chart-rhythm');
+  if (chartRhythmElem) {
+    var chartRhythm = echarts.init(chartRhythmElem, null, { renderer: 'svg' });
+    chartRhythm.setOption({
+      animation: false,
+      tooltip: {
+        trigger: 'axis', axisPointer: { type: 'line' },
+        backgroundColor: bg2, borderColor: rule, textStyle: { color: ink }, appendToBody: true,
+        formatter: function(params) {
+          var p = params[0];
+          return p.name + '<br/>指数点位: <b>' + p.value + '</b>（基准=100）';
+        }
+      },
+      legend: {
+        data: ['预测走势路径'],
+        bottom: 0, textStyle: { color: muted, fontSize: 12 }
+      },
+      grid: { left: 60, right: 40, top: 50, bottom: 60 },
+      xAxis: {
+        type: 'category',
+        data: ['7月上','7月下','8月上','8月下','9月上','9月下','10月上','10月下','11月上','11月下','12月上','12月下','1月上','1月下','2月','3月','4月','5月','6月'],
+        axisLine: { lineStyle: { color: rule } },
+        axisLabel: { color: muted, fontSize: 10, interval: 0, rotate: 35 },
+        axisTick: { show: false }
+      },
+      yAxis: {
+        type: 'value', name: '指数（基准=100）', nameTextStyle: { color: muted, fontSize: 11 },
+        min: 90, max: 190,
+        axisLine: { show: false }, axisLabel: { color: muted, fontSize: 11 },
+        splitLine: { lineStyle: { color: rule, type: 'dashed' } }
+      },
+      series: [{
+        name: '预测走势路径', type: 'line', smooth: true, symbol: 'circle', symbolSize: 5,
+        data: [100, 108, 112, 107, 120, 124, 119, 130, 135, 131, 145, 140, 150, 152, 145, 142, 158, 170, 178],
+        lineStyle: { color: accent, width: 2.5, type: 'dashed' },
+        itemStyle: { color: accent },
+        areaStyle: {
+          color: {
+            type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: accent + '33' },
+              { offset: 1, color: accent + '05' }
+            ]
+          }
+        },
+        markArea: {
+          silent: true,
+          data: [
+            [{ name: '第一阶段\n估值修复', xAxis: '7月上', itemStyle: { color: accent + '15' } }, { xAxis: '8月下' }],
+            [{ name: '第二阶段\n业绩主升', xAxis: '9月上', itemStyle: { color: accent2 + '15' } }, { xAxis: '1月下' }],
+            [{ name: '第三阶段\n情绪扩散', xAxis: '2月', itemStyle: { color: '#56d36415' } }, { xAxis: '6月' }]
+          ],
+          label: { color: muted, fontSize: 10, position: 'insideTop' }
+        },
+        markPoint: {
+          symbol: 'pin', symbolSize: 45,
+          label: { color: '#fff', fontSize: 9 },
+          itemStyle: { color: '#f85149' },
+          data: [
+            { name: '回调1', coord: ['8月下', 107], value: '-4.5%' },
+            { name: '回调2', coord: ['10月上', 119], value: '-4%' },
+            { name: '回调3', coord: ['11月下', 131], value: '-3%' },
+            { name: '回调4', coord: ['12月下', 140], value: '-3.4%' },
+            { name: '春节回调', coord: ['3月', 142], value: '-6.6%' },
+            { name: '见顶', coord: ['6月', 178], value: '+78%', itemStyle: { color: '#f0883e' } }
+          ]
+        },
+        markLine: {
+          silent: true, symbol: 'none',
+          lineStyle: { color: '#f85149', type: 'dotted', width: 1.5 },
+          label: { color: '#f85149', fontSize: 10, position: 'insideEndTop' },
+          data: [
+            { yAxis: 100, name: '基准线' }
+          ]
+        }
+      }]
+    });
+    window.addEventListener('resize', function() { chartRhythm.resize(); });
+  }
 });
