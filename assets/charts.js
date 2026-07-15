@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       series: [{
         name: '预测走势路径', type: 'line', smooth: true, symbol: 'circle', symbolSize: 5,
-        data: [100, 108, 112, 107, 120, 124, 119, 130, 135, 131, 145, 140, 150, 152, 145, 142, 158, 170, 178],
+        data: [100, 106, 110, 105, 118, 122, 112, 128, 136, 130, 148, 142, 152, 155, 148, 145, 162, 175, 178],
         lineStyle: { color: accent, width: 2.5, type: 'dashed' },
         itemStyle: { color: accent },
         areaStyle: {
@@ -147,9 +147,9 @@ document.addEventListener('DOMContentLoaded', function() {
         markArea: {
           silent: true,
           data: [
-            [{ name: '第一阶段\n估值修复', xAxis: '7月上', itemStyle: { color: accent + '15' } }, { xAxis: '8月下' }],
-            [{ name: '第二阶段\n业绩主升', xAxis: '9月上', itemStyle: { color: accent2 + '15' } }, { xAxis: '1月下' }],
-            [{ name: '第三阶段\n情绪扩散', xAxis: '2月', itemStyle: { color: '#56d36415' } }, { xAxis: '6月' }]
+            [{ name: '子浪3-1\n中枢突破', xAxis: '7月上', itemStyle: { color: accent + '15' } }, { xAxis: '9月上' }],
+            [{ name: '子浪3-3\n主升浪', xAxis: '9月下', itemStyle: { color: accent2 + '15' } }, { xAxis: '2月' }],
+            [{ name: '子浪3-5\n冲顶', xAxis: '3月', itemStyle: { color: '#56d36415' } }, { xAxis: '6月' }]
           ],
           label: { color: muted, fontSize: 10, position: 'insideTop' }
         },
@@ -158,12 +158,12 @@ document.addEventListener('DOMContentLoaded', function() {
           label: { color: '#fff', fontSize: 9 },
           itemStyle: { color: '#f85149' },
           data: [
-            { name: '回调1', coord: ['8月下', 107], value: '-4.5%' },
-            { name: '回调2', coord: ['10月上', 119], value: '-4%' },
-            { name: '回调3', coord: ['11月下', 131], value: '-3%' },
-            { name: '回调4', coord: ['12月下', 140], value: '-3.4%' },
-            { name: '春节回调', coord: ['3月', 142], value: '-6.6%' },
-            { name: '见顶', coord: ['6月', 178], value: '+78%', itemStyle: { color: '#f0883e' } }
+            { name: '3-2回调', coord: ['8月下', 105], value: '-5%', itemStyle: { color: '#f0883e' } },
+            { name: '3-4回调', coord: ['10月上', 112], value: '-8%', itemStyle: { color: '#f0883e' } },
+            { name: '3-4回调', coord: ['11月下', 130], value: '-4.4%', itemStyle: { color: '#f0883e' } },
+            { name: '3-4回调', coord: ['12月下', 142], value: '-4%', itemStyle: { color: '#f0883e' } },
+            { name: '春节回调', coord: ['3月', 145], value: '-6.5%', itemStyle: { color: '#f0883e' } },
+            { name: '见顶', coord: ['6月', 178], value: '+78%', itemStyle: { color: '#f85149' } }
           ]
         },
         markLine: {
@@ -171,7 +171,8 @@ document.addEventListener('DOMContentLoaded', function() {
           lineStyle: { color: '#f85149', type: 'dotted', width: 1.5 },
           label: { color: '#f85149', fontSize: 10, position: 'insideEndTop' },
           data: [
-            { yAxis: 100, name: '基准线' }
+            { yAxis: 100, name: '基准线' },
+            { yAxis: 124, name: '中枢上沿', lineStyle: { color: '#f0883e', type: 'dashed', width: 1 }, label: { color: '#f0883e' } }
           ]
         }
       }]
