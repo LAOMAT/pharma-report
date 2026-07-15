@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
           label: { show: true, position: 'top', color: ink, fontSize: 12, fontWeight: 600, formatter: function(p) { return p.value + '月'; } }
         },
         {
-          name: 'AI加速修正 (2026-2027E)', type: 'bar', data: [3.5, 7, 3.5], barWidth: '30%',
+          name: 'AI加速修正 (2026-2027E)', type: 'bar', data: [2, 4.5, 2.5], barWidth: '30%',
           itemStyle: { color: accent2, borderRadius: [4, 4, 0, 0] },
           label: { show: true, position: 'top', color: accent2, fontSize: 12, fontWeight: 600, formatter: function(p) { return p.value + '月'; } }
         }
